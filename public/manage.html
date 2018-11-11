@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+    <!-- - 引入重置样式 -->
+    <link rel="stylesheet" href="styles/reset.css">
+    <!-- 引入elementUI -->
+    <link rel="stylesheet" href="styles/elementUI.css">
+    <!-- 引入首页的样式 -->
+    <link rel="stylesheet" href="styles/index.css">
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <el-main>
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>添加管理</span>
+                </div>
+                <div class="text item">
+                    <el-form :label-position="labelPosition" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px"
+                        class="demo-ruleForm">
+                        <el-form-item label="所属分类:" prop=""></el-form-item>
+                        <el-select v-model="value" placeholder="---顶级分类---">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                            </el-option>
+                        </el-select>
+                        <el-form-item label="分类名称" prop="className" width="700">
+                            <el-input type="text" v-model="ruleForm2.className" autocomplete="off"></el-input>
+                        </el-form-item>
+
+
+
+                        <el-form-item label="用户状态" prop="status">
+                            <el-radio v-model="radio" label="1">启用</el-radio>
+                            <el-radio v-model="radio" label="2">禁用</el-radio>
+                        </el-form-item>
+
+                        <el-button type="success" round>添加</el-button>
+                    </el-form>
+                </div>
+            </el-card>
+        </el-main>
+    </div>
+    <!-- 引入jquery -->
+    <script src="./javascripts/jquery.min.js"></script>
+
+    <!-- 引入vue -->
+    <script src="./javascripts/vue.min.js"></script>
+    <!-- 引入elementUI -->
+    <script src="./javascripts/elementUI.js"></script>
+
+    </script>
+    <script>
+        //创建vue对象
+        new Vue({
+            //挂载视图
+            el: "#app",
+            data() {
+                return {
+                    radio: '2',
+                    status: '',
+                    labelPosition: 'top',
+                    ruleForm2: {
+                    className: ''//商品名称
+                    },
+                    rules2: {
+                        className: [
+                            { required: true, message: "请输入商品名称", trigger: 'blur' },
+                            { min: 1, max: 18, message: "请输入商品名称", trigger: "blur" }
+                        ],
+
+                    },
+                    options: [{
+                        value: '选项1',
+                        label: '初级分类'
+                    }, {
+                        value: '选项2',
+                        label: '中级分类'
+                    }, {
+                        value: '选项3',
+                        label: '高级分类'
+                    }, {
+                        value: '选项4',
+                        label: '顶级分类'
+                    }, {
+
+                    }],
+                    value: ''
+
+                };
+
+            },
+
+            methods: {
+                //提交表单
+
+
+
+            }
+        });
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

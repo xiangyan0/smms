@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 引入重置样式 -->
+    <link rel="stylesheet" href="styles/reset.css">
+    <!-- 引入elementUI -->
+    <link rel="stylesheet" href="styles/elementUI.css">
+    <!-- 引入首页的样式 -->
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <el-main>
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>会员管理</span>
+                </div>
+                <div class="text item">
+                    <!-- 账号管理 -->
+<el-form :label-position="labelPosition" :model="ruleForm2" ref="ruleForm2" label-width="50px"
+    class="demo-ruleForm  demobottom">
+<el-form-item label="搜索:" prop="search">
+                <el-input v-model="input" style="width:200px"></el-input> 
+
+<a href="">会员卡</a> <a href="">会员名</a><a href="">电话</a> <a href="">手机</a> 
+<el-button type="success" round>查询</el-button>
+                </el-form>
+                <el-table :data="tableData4" :row-class-name="tableRowClassName" style="width: 100%" max-height="250">
+                    <el-table-column fixed prop="date" label="日期" width="150">
+                    </el-table-column>
+                    <el-table-column prop="name" label="姓名" width="150">
+                    </el-table-column>
+                    <el-table-column prop="province" label="省份" width="150">
+                    </el-table-column>
+                    <el-table-column prop="city" label="市区" width="150">
+                    </el-table-column>
+                    <el-table-column prop="address" label="地址" width="360">
+                    </el-table-column>
+                    <el-table-column prop="zip" label="邮编" width="180">
+                    </el-table-column>
+                    <el-table-column fixed="right" label="操作" width="120">
+                        <template slot-scope="scope">
+                            
+                            <el-button @click.native.prevent="deleteRow(scope.$index, tableData4)" type="text" size="small">
+                            <i class="el-icon-edit"></i>
+                            </el-button>
+                        </template>
+                    </el-table-column>
+
+                    
+                </el-table>
+                <div class="block">
+                    <a href="" class="href">首页</a><a href="" class="href">上一页</a>
+                <el-button type="success" circle>1</el-button>
+                    <a href="" class="href">尾页</a><a href="" class="href">下一页</a>
+                </div>
+                </div>
+            </el-card>
+        </el-main>
+    </div>
+    <!-- 引入jquery -->
+    <script src="./javascripts/jquery.min.js"></script>
+    <!-- 使用cdn -->
+    <!-- <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script> -->
+    <!-- 引入vue -->
+    <script src="./javascripts/vue.min.js"></script>
+    <!-- 引入elementUI -->
+    <script src="./javascripts/elementUI.js"></script>
+    <script>
+        //创建vue实例
+        new Vue({
+            //挂载视图
+            el: "#app",
+            data() {
+                return {
+
+                    labelPosition:"right",
+                      input: '',
+
+                    tableData4: [{
+                        date: '2016-05-03',
+                        name: '王小虎',
+                        province: '上海',
+                        city: '普陀区',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        zip: 200333
+                    }, {
+                        date: '2016-05-02',
+                        name: '王小虎',
+                        province: '上海',
+                        city: '普陀区',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        zip: 200333
+                   
+               
+                    }],
+
+
+
+
+
+
+
+
+                      ruleForm2:{
+                         search :'',
+
+                         
+                      }
+                };
+            },
+            methods: {
+             deleteRow(index, rows) {
+                    rows.splice(index, 1);
+                    
+                }  ,
+                tableRowClassName({ row, rowIndex }) {
+                    if (rowIndex === 0) {
+                        return 'success-row';
+                    
+                        
+                    }
+                    return '';
+                }
+            },
+            
+        });
+    </script>
+</body>
+
+</html>

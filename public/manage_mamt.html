@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 引入重置样式 -->
+    <link rel="stylesheet" href="styles/reset.css">
+    <!-- 引入elementUI -->
+    <link rel="stylesheet" href="styles/elementUI.css">
+    <!-- 引入首页的样式 -->
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <el-main>
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>添加分类</span>
+                </div>
+                <div class="text item">
+                    <!-- 账号管理 -->
+                    <template>
+                        <el-table :data="tableshop" style="width: 100%">
+                            <el-table-column label="分类名称" width="700">
+                                <template slot-scope="scope">
+                                   
+                                    <span style="margin-left: 10px">{{ scope.row.shop }}</span>
+                                </template>
+                            </el-table-column>
+                          
+                            <el-table-column label="管理">
+                                <template slot-scope="scope">
+                                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)" type="primary" plain>
+                                        <i class="el-icon-edit"></i> 编辑</el-button>
+                                    
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                    </template>
+                </div>
+            </el-card>
+        </el-main>
+    </div>
+    <!-- 引入jquery -->
+    <script src="./javascripts/jquery.min.js"></script>
+    <!-- 使用cdn -->
+    <!-- <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script> -->
+    <!-- 引入vue -->
+    <script src="./javascripts/vue.min.js"></script>
+    <!-- 引入elementUI -->
+    <script src="./javascripts/elementUI.js"></script>
+    <script>
+        //创建vue实例
+        new Vue({
+            //挂载视图
+            el: "#app",
+            data() {
+                return {
+                    tableshop: [{
+                        shop: '舒肤佳',
+                    
+                      
+                    }, {
+                        shop: '舒肤佳A',
+                      
+                       
+                    }, {
+                        shop: '舒肤佳B',
+                       
+                      
+                    }, {
+                        shop: '海飞丝',
+                       
+                        
+                    }]
+                };
+            },
+            methods: {
+                //编辑和删除的方法
+                handleEdit(index, row) {
+                    console.log(index, row);
+                },
+                handleDelete(index, row) {
+                    console.log(index, row);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
